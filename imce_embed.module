@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function imce_embed_theme() {
+  return array(
+    'imce_page' => array(
+      'template' => 'imce-page', 
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function imce_embed_menu() {
+  $items['admin/filemanager'] = array(
+    'title' => 'File Manager',
+     'page callback' => 'imce_page',
+    'access callback' => '_imce_access',
+    'file' => 'imce_embed.admin.inc',
+  );
+  
+  return $items;
+}
+
+function _imce_access() {
+  return user_access('Use IMCE Embed');
+}
+
+/**
+ * Implements hook_permission().
+ */
+function imce_embed_permission() {
+  return array(
+    'Use IMCE Embed' => array(
+      'title' => t('Use IMCE'),
+      'description' => t('Manage Files in IMCE.'),
+    ),
+  );
+}

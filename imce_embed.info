@@ -1,0 +1,5 @@
+name = IMCE Embed
+description = Provides a page for IMCE filemanager
+package = "Media"
+dependencies[] = "imce"
+core = 7.x
